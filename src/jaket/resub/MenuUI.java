@@ -17,6 +17,10 @@ public class MenuUI extends javax.swing.JFrame {
     public MenuUI() {
         initComponents();
     }
+    private CreateMenu frame2= null;
+    private ExistingTripUI frame3 = null;
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -35,8 +39,18 @@ public class MenuUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnCreate.setText("Create Trip");
+        btnCreate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateActionPerformed(evt);
+            }
+        });
 
         btnExisting.setText("Existing Trips");
+        btnExisting.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExistingActionPerformed(evt);
+            }
+        });
 
         btnHelp.setText("Help");
 
@@ -71,6 +85,24 @@ public class MenuUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
+        // TODO add your handling code here:
+        
+        frame2 = new CreateMenu();
+        if(!frame2.isVisible()){
+            frame2.setVisible(true);
+        }
+           
+    }//GEN-LAST:event_btnCreateActionPerformed
+
+    private void btnExistingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExistingActionPerformed
+        // TODO add your handling code here:
+        frame3 = new ExistingTripUI();
+        if(!frame3.isVisible()){
+            frame3.setVisible(true);
+        }
+    }//GEN-LAST:event_btnExistingActionPerformed
 
     /**
      * @param args the command line arguments

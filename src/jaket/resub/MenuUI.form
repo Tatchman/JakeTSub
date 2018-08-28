@@ -56,11 +56,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Create Trip"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCreateActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnExisting">
       <Properties>
         <Property name="text" type="java.lang.String" value="Existing Trips"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExistingActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnHelp">
       <Properties>
