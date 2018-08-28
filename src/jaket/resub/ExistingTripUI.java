@@ -24,6 +24,7 @@ public class ExistingTripUI extends javax.swing.JFrame {
         
     }
 
+    private MenuUI frame1 = null;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -46,6 +47,7 @@ public class ExistingTripUI extends javax.swing.JFrame {
         cbConsent = new javax.swing.JCheckBox();
         jLabel4 = new javax.swing.JLabel();
         txtTripName = new javax.swing.JTextField();
+        btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,7 +80,12 @@ public class ExistingTripUI extends javax.swing.JFrame {
 
         jLabel4.setText("Trip Name:");
 
-        txtTripName.setText("jTextField1");
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -94,25 +101,28 @@ public class ExistingTripUI extends javax.swing.JFrame {
                             .addComponent(jLabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(cbConsent)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtLastName)
-                                        .addComponent(txtFirstName)
-                                        .addComponent(txtContact, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(cbPayment))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(22, 22, 22))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtTripName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(4, 4, 4))))
+                                .addComponent(txtTripName, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(4, 4, 4))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(cbConsent)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnBack))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(txtLastName)
+                                                .addComponent(txtFirstName)
+                                                .addComponent(txtContact, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(cbPayment))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(22, 22, 22))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -141,11 +151,13 @@ public class ExistingTripUI extends javax.swing.JFrame {
                             .addComponent(jLabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cbPayment))
-                    .addComponent(btnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE))
+                    .addComponent(btnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbConsent)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbConsent)
+                    .addComponent(btnBack))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -155,7 +167,8 @@ public class ExistingTripUI extends javax.swing.JFrame {
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
         if(cbPayment.isSelected() && cbConsent.isSelected()){
-            model.insertRow(model.getRowCount(),new Object[]{txtTripName.getText(),txtFirstName.getText(),txtLastName.getText(),txtContact.getText(),"Yes","Yes"});            
+            model.insertRow(model.getRowCount(),new Object[]{txtTripName.getText(),txtFirstName.getText(),txtLastName.getText(),txtContact.getText(),"Yes","Yes"});  
+            
         }
         else if(cbPayment.isSelected()){
             model.insertRow(model.getRowCount(),new Object[]{txtTripName.getText(),txtFirstName.getText(),txtLastName.getText(),txtContact.getText(),"Yes","No"}); 
@@ -163,8 +176,29 @@ public class ExistingTripUI extends javax.swing.JFrame {
         else if(cbConsent.isSelected()){
             model.insertRow(model.getRowCount(),new Object[]{txtTripName.getText(),txtFirstName.getText(),txtLastName.getText(),txtContact.getText(),"No","Yes"}); 
         }
+        else{
+            model.insertRow(model.getRowCount(),new Object[]{txtTripName.getText(),txtFirstName.getText(),txtLastName.getText(),txtContact.getText(),"No","No"}); 
+        }
+        txtTripName.setText("");
+        txtFirstName.setText("");
+        txtLastName.setText("");
+        txtContact.setText("");
+        cbPayment.setSelected(false);
+        cbConsent.setSelected(false);
     }//GEN-LAST:event_btnAddActionPerformed
 
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        frame1 = new MenuUI();
+        if(!frame1.isVisible()){
+            frame1.setVisible(true);
+            CloseFrame();
+        }
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    public void CloseFrame(){
+        super.dispose();
+    }
     /**
      * @param args the command line arguments
      */
@@ -202,6 +236,7 @@ public class ExistingTripUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnBack;
     private javax.swing.JCheckBox cbConsent;
     private javax.swing.JCheckBox cbPayment;
     private javax.swing.JLabel jLabel1;

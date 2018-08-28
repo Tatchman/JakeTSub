@@ -19,6 +19,10 @@ public class MenuUI extends javax.swing.JFrame {
     }
     private CreateMenu frame2= null;
     private ExistingTripUI frame3 = null;
+    private HelpUI frame4 = null;
+    private MenuUI frame1 = null;
+    
+    
     
     
 
@@ -53,6 +57,11 @@ public class MenuUI extends javax.swing.JFrame {
         });
 
         btnHelp.setText("Help");
+        btnHelp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHelpActionPerformed(evt);
+            }
+        });
 
         btnExit.setText("Exit");
 
@@ -90,8 +99,10 @@ public class MenuUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         frame2 = new CreateMenu();
+        frame1 = new MenuUI();
         if(!frame2.isVisible()){
             frame2.setVisible(true);
+            CloseFrame();
         }
            
     }//GEN-LAST:event_btnCreateActionPerformed
@@ -101,9 +112,22 @@ public class MenuUI extends javax.swing.JFrame {
         frame3 = new ExistingTripUI();
         if(!frame3.isVisible()){
             frame3.setVisible(true);
+            CloseFrame();
         }
     }//GEN-LAST:event_btnExistingActionPerformed
 
+    private void btnHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHelpActionPerformed
+        // TODO add your handling code here:
+        frame4 = new HelpUI();
+        if(!frame4.isVisible()){
+            frame4.setVisible(true);
+            CloseFrame();
+        }
+    }//GEN-LAST:event_btnHelpActionPerformed
+
+    public void CloseFrame(){
+        super.dispose();
+    }
     /**
      * @param args the command line arguments
      */
@@ -134,6 +158,7 @@ public class MenuUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                //frame1 = new MenuUI();
                 new MenuUI().setVisible(true);
             }
         });
