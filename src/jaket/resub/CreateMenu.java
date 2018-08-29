@@ -327,18 +327,34 @@ public class CreateMenu extends javax.swing.JFrame {
         double sundry = 0.0;
         double transport = 0.0;
         double venue = 0.0;
+        double residential = 0.0;
+        double external = 0.0;
         double total = 0.0;
         try{
-           // if(cbExternal)
-        sundry = Double.parseDouble(txtSundry.getText());
-        transport = Double.parseDouble(txtTransport.getText());
-        venue = Double.parseDouble(txtVenue.getText());
+           if(cbResidential.isSelected()){
+            sundry = Double.parseDouble(txtSundry.getText());
+            transport = Double.parseDouble(txtTransport.getText());
+            venue = Double.parseDouble(txtVenue.getText());
+            residential = Double.parseDouble(txtAccommodationCost.getText());
+            
+            total = ((sundry + transport)+ venue)+ residential;
+           }
+           else if(cbExternal.isSelected()){
+               external = Double.parseDouble(txtExtCost.getText());
+               total = external;
+           }
+           else{
+            sundry = Double.parseDouble(txtSundry.getText());
+            transport = Double.parseDouble(txtTransport.getText());
+            venue = Double.parseDouble(txtVenue.getText());
+            
+            total = (sundry + transport)+ venue;
+           }
         lblError.setText("");
         }
         catch(Exception e){
             lblError.setText("Input a valid cost");
-        }
-        total = (sundry + transport) + venue;
+        }  
         
         txtCostDisplay.setText(String.valueOf(total));
         
@@ -375,6 +391,10 @@ public class CreateMenu extends javax.swing.JFrame {
             txtVenue.setEnabled(true);
             txtVenueName.setEnabled(true);
             txtSundry.setEnabled(true);
+            txtExtCompany.setEnabled(false);
+            txtExtCompanyName.setEnabled(false);
+            txtExtCost.setEnabled(false);
+            cbResidential.setEnabled(true);
             txtAccommodationCost.setText("");
             txtExtCost.setText("");
             txtCostDisplay.setText("");
@@ -388,8 +408,9 @@ public class CreateMenu extends javax.swing.JFrame {
         txtSundry.setText("");
         txtTransport.setText("");
         txtVenue.setText("");
-        txtAccommodation.setText("");
+        txtAccommodationCost.setText("");
         txtCostDisplay.setText("");
+        txtExtCost.setText("");
         lblError.setText("");
     }//GEN-LAST:event_btnClearCostActionPerformed
 
@@ -431,7 +452,7 @@ public class CreateMenu extends javax.swing.JFrame {
         cbExternal.setSelected(false);
         cbResidential.setSelected(false);
         lblError.setText("");
-        
+        txtAccommodationNo.setText("");        
         txtTC.setEnabled(true);
         txtTCN.setEnabled(true);
         txtTransport.setEnabled(true);
